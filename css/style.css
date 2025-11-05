@@ -1,0 +1,543 @@
+/* ======================================
+🐾 DOM’S PET - CSS FINAL COMPLETO E SOFISTICADO
+====================================== */
+
+:root {
+  --bege-claro: #f9f6f2;
+  --bege: #eee5cc;
+  --marrom: #a47c48;
+  --marrom-escuro: #4b3832;
+  --verde: #718355;
+  --verde-claro: #a3b18a;
+  --branco: #ffffff;
+
+  --fonte-principal: 'Poppins', sans-serif;
+
+  --fs-h1: 2.2rem;
+  --fs-h2: 1.6rem;
+  --fs-h3: 1.3rem;
+  --fs-body: 1rem;
+
+  --espaco-1: 8px;
+  --espaco-2: 16px;
+  --espaco-3: 24px;
+  --espaco-4: 32px;
+  --espaco-5: 48px;
+  --espaco-6: 64px;
+
+  --sombra: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================
+   GERAL
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fonte-principal);
+}
+
+body {
+  background-color: var(--bege-claro);
+  color: var(--marrom-escuro);
+  line-height: 1.6;
+}
+
+/* ==========================
+   CABEÇALHO
+========================== */
+/* ---- Header layout (logo left, title center, controls right) ---- */
+header {
+  background-color: var(--marrom);
+  color: var(--branco);
+  padding: var(--espaco-3);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--sombra);
+}
+
+/* pequenas áreas para alinhamento */
+.header-left { justify-self: start; display:flex; align-items:center; }
+.header-right { justify-self: end; display:flex; align-items:center; gap:12px; }
+
+/* logo */
+.logo { width:90px; height:90px; border-radius:50%; object-fit:cover; }
+
+/* title centralizado */
+header h1 { justify-self: center; margin: 0; font-size: var(--fs-h1); }
+
+/* nav desktop: coluna vertical dos links (à direita) */
+header nav { display: block; }
+header nav ul { list-style: none; display:flex; flex-direction:column; gap:8px; align-items:flex-start; margin:0; padding:0; }
+header nav li::before { content: "•"; color:var(--branco); margin-right:8px; }
+
+/* menu-toggle (hamburger) - hidden no desktop */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--branco);
+  font-size: 1.5rem;
+  cursor:  auto;
+}
+
+/* -----------------------
+   MOBILE BEHAVIOR
+   - esconder nav por padrão no mobile
+   - exibir com transição quando .mostrar está presente
+------------------------*/
+@media (max-width: 768px) {
+  /* reorganiza header para mobile */
+  header { grid-template-columns: 1fr auto; grid-auto-rows: auto; }
+  header h1 { grid-column: 1 / -1; order: -1; text-align: center; } 
+
+  /* exibe botão hamburguer */
+  .menu-toggle { display: inline-flex; align-items: center; justify-content:right; }
+
+  /* nav escondido e com transição "slide" */
+  header nav {
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    grid-column: 1 / -1;
+    width: 100%;
+    background-color: var(--marrom);
+    border-radius: 0 0 10px 10px;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    padding: 12px 20px;
+    align-items: center;
+  }
+
+  /* quando mostrar */
+  header nav.mostrar {
+    max-height: 500px; /* suficiente para listar os itens; ajustável */
+    padding-bottom: 12px;
+  }
+}
+
+
+
+/* ==========================
+   QUEM SOMOS
+========================== */
+.quem-somos {
+  text-align: center;
+  max-width: 900px;
+  margin: var(--espaco-5) auto;
+  padding: var(--espaco-3);
+  background-color: var(--branco);
+  border-radius: 15px;
+  box-shadow: var(--sombra);
+}
+
+.quem-somos h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--espaco-2);
+  color: var(--verde);
+}
+
+.quem-somos p {
+  margin-bottom: var(--espaco-2);
+  font-size: var(--fs-body);
+  color: var(--marrom-escuro);
+}
+
+/* ==========================
+   MISSÃO, VISÃO E VALORES
+========================== */
+.missao-visao-valores {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--espaco-3);
+  margin: var(--espaco-5) auto;
+  padding: 0 var(--espaco-2);
+  max-width: 1100px;
+}
+
+.missao-visao-valores div {
+  background-color: var(--bege);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  padding: var(--espaco-3);
+  flex: 1 1 300px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.missao-visao-valores div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.missao-visao-valores h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--espaco-1);
+  color: var(--verde);
+}
+
+.missao-visao-valores p,
+.missao-visao-valores ul {
+  font-size: var(--fs-body);
+  color: var(--marrom-escuro);
+}
+
+.missao-visao-valores ul {
+  list-style: disc;
+  text-align: left;
+  margin-top: var(--espaco-1);
+  margin-left: 25px;
+}
+
+/* ==========================
+   RESGATES MARCANTES
+========================== */
+.resgates-marcantes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-3);
+  margin: var(--espaco-5) auto;
+  padding: 0 var(--espaco-2);
+}
+
+.resgates-marcantes h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--espaco-2);
+  color: var(--verde);
+}
+
+.resgate {
+  background-color: var(--bege);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  padding: var(--espaco-3);
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.resgate:hover {
+  transform: scale(1.02);
+}
+
+.resgate img {
+  width: 120px;
+  height: 140px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: var(--espaco-2);
+}
+
+.resgate h3 {
+  color: var(--verde);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--espaco-1);
+}
+
+/* ==========================
+   PROJETOS
+========================== */
+.projeto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-3);
+  margin-bottom: var(--espaco-4);
+  padding: var(--espaco-3);
+  background-color: var(--bege);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s ease;
+}
+
+.projeto:hover {
+  transform: translateY(-4px);
+}
+
+.projeto img {
+  width: 160px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.projeto h3 {
+  color: var(--verde);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--espaco-1);
+}
+
+.projeto .botao {
+  display: inline-block;
+  background-color: var(--verde);
+  color: var(--branco);
+  text-decoration: none;
+  padding: var(--espaco-1) var(--espaco-3);
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.projeto .botao:hover {
+  background-color: var(--verde-claro);
+}
+
+/* ==========================
+   CADASTRO
+========================== */
+.cadastro {
+  text-align: center;
+  margin: var(--espaco-5) auto;
+  padding: 0 var(--espaco-2);
+  max-width: 700px;
+}
+
+.cadastro h2 {
+  color: var(--verde);
+  font-size: var(--fs-h2);
+  margin-bottom: var(--espaco-1);
+}
+
+.cadastro p {
+  margin-bottom: var(--espaco-3);
+  color: var(--marrom-escuro);
+}
+
+.cadastro form {
+  background-color: var(--branco);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: var(--espaco-4);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+
+
+legend {
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  color: var(--marrom-escuro);
+  margin-bottom: var(--espaco-2);
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+fieldset input[type="radio"] {
+  margin: 0;
+  transform: translateY(1px);
+}
+
+
+input, select {
+  width: 100%;
+  padding: var(--espaco-1);
+  border: 1px solid var(--marrom);
+  border-radius: 8px;
+  margin-bottom: var(--espaco-2);
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--verde);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(113, 131, 85, 0.2);
+}
+
+button.botao {
+  display: block;
+  width: 100%;
+  padding: var(--espaco-2);
+  background-color: var(--verde);
+  color: var(--branco);
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.botao:hover {
+  background-color: var(--verde-claro);
+}
+
+/* ==========================
+   RODAPÉ
+========================== */
+footer {
+  background-color: var(--marrom);
+  color: var(--branco);
+  text-align: center;
+  padding: var(--espaco-3);
+  margin-top: var(--espaco-5);
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  gap: var(--espaco-3);
+  list-style: none;
+  margin-bottom: var(--espaco-2);
+}
+
+footer nav a {
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+footer nav a:hover {
+  color: var(--verde-claro);
+}
+
+/* ==========================
+   RESPONSIVIDADE
+========================== */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  header nav ul {
+    align-items: center;
+  }
+
+  .missao-visao-valores {
+    flex-direction: column;
+  }
+
+  .projeto {
+    flex-direction: column;
+  }
+
+  .resgate {
+    width: 90%;
+  }
+
+  .cadastro form {
+    width: 90%;
+  }
+}
+
+/* ==========================
+   ALERTAS E VALIDAÇÃO
+========================== */
+input.erro {
+  border-color: red;
+  background-color: #ffeaea;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background-color: var(--marrom-escuro);
+  color: var(--branco);
+  padding: 14px 24px;
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 9999;
+}
+
+.toast.mostrar {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================
+   🌙 MODO ESCURO (DARK MODE)
+========================== */
+.modo-toggle {
+  position: absolute;
+  top: 50px;
+  right: 150px;
+  background: transparent;
+  border: 2px solid var(--branco);
+  color: var(--branco);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modo-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Tema escuro aplicado ao body */
+body.dark-mode {
+  background-color: #121826;
+  color: #e6e6e6;
+}
+
+/* Cabeçalho e rodapé */
+body.dark-mode header {
+  background-color: #2b2b2b;
+}
+
+body.dark-mode footer {
+  background-color: #2b2b2b;
+}
+
+/* Cards e containers */
+body.dark-mode .quem-somos,
+body.dark-mode .missao-visao-valores div,
+body.dark-mode .resgate,
+body.dark-mode .projeto,
+body.dark-mode .cadastro form {
+  background-color: #b3d4ff;
+  color: #000000;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Bordas, botões e inputs */
+body.dark-mode input,
+body.dark-mode select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+body.dark-mode input.erro {
+  background-color: #442222;
+}
+
+body.dark-mode button.botao {
+  background-color: var(--verde);
+  color: var(--branco);
+}
+
+body.dark-mode .toast {
+  background-color: #333;
+}
+
+/* Links */
+body.dark-mode a {
+  color: var(--verde-claro);
+}
+
