@@ -43,18 +43,19 @@ O desenvolvimento seguiu boas práticas de **semântica HTML**, **estilização 
    ├── 📄 cadastro.html # Página de cadastro de voluntários e adotantes
 
 
-├── 📁 css/
+ 📁 css/
 │ 
 
    └── style.css # Estilo principal e layout responsivo
 
 
-├── 📁 javascript/
+ 📁 javascript/
 │ 
+  
    └── script.js # Dark mode e menu hambúrguer
 
 
-├── 📁 img/ # Imagens do site
+ 📁 img/ # Imagens do site
 
   
 
