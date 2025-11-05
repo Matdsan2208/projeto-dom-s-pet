@@ -36,13 +36,24 @@ O desenvolvimento seguiu boas práticas de **semântica HTML**, **estilização 
 
 📁 doms-pet/
 ├── 📄 index.html # Página inicial (Quem Somos)
+
 ├── 📄 projetos.html # Página com os projetos sociais
+
 ├── 📄 cadastro.html # Página de cadastro de voluntários e adotantes
+
+
 ├── 📁 css/
-│ └── style.css # Estilo principal e layout responsivo
+│ 
+└── style.css # Estilo principal e layout responsivo
+
+
 ├── 📁 javascript/
-│ └── script.js # Dark mode e menu hambúrguer
+│ 
+└── script.js # Dark mode e menu hambúrguer
+
+
 ├── 📁 img/ # Imagens do site
+
 └── 📄 README.md # Documentação do projeto
 
 
