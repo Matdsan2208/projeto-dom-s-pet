@@ -44,13 +44,13 @@ O desenvolvimento seguiu boas práticas de **semântica HTML**, **estilização 
 
 
  📁 css/
-│ 
+ 
 
    └── style.css # Estilo principal e layout responsivo
 
 
  📁 javascript/
-│ 
+ 
   
    └── script.js # Dark mode e menu hambúrguer
 
